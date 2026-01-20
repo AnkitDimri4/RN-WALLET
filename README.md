@@ -1,9 +1,5 @@
 
 ---
-
-## Root README.md (for RN-WALLET)
-
-```md
 # RN-WALLET 
 
 RN-WALLET is a full-stack **expense tracking application** consisting of a **React Native (Expo) mobile app** and a **Node.js + Express backend**.  
@@ -88,6 +84,4 @@ Clone the repo and follow the respective README based on what you want to run.
 ## Note
 
 This project demonstrates **modern mobile + backend development**, secure authentication, and scalable API design.
-```
-
 ---
