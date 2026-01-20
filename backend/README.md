@@ -16,6 +16,7 @@ This repository contains the **backend service** for the RN-WALLET expense track
 * **Clerk** – Authentication
 * **dotenv** – Environment Variables
 * **nodemon** – Development Server
+* **Cron Jobs** – Background & scheduled tasks
 
 ---
 
@@ -23,16 +24,18 @@ This repository contains the **backend service** for the RN-WALLET expense track
 
 ```bash
 backend/
-├── config/
-│   ├── db.js              # Database connection (Neon)
-│   └── upstash.js         # Redis rate limiter config
-├── controllers/
-│   └── transactionsController.js
-├── middleware/
-│   └── rateLimiter.js
-├── routes/
-│   └── transactionsRoute.js
-├── server.js              # App entry point
+├── src/
+│   ├── config/
+│   │   ├── db.js          # Database connection (Neon)
+│   │   ├── upstash.js     # Redis rate limiter config
+│   │   └── cron.js        # Scheduled background jobs
+│   ├── controllers/
+│   │   └── transactionsController.js
+│   ├── middleware/
+│   │   └── rateLimiter.js
+│   ├── routes/
+│   │   └── transactionsRoute.js
+│   └── server.js          # App entry point
 ├── .env                   # Environment variables (ignored)
 ├── .gitignore
 ├── package.json
@@ -92,6 +95,14 @@ http://localhost:5001
 
 ---
 
+## Background Jobs (Cron)
+
+* Uses **cron-based scheduling** for automated backend tasks
+* Configured in `src/config/cron.js`
+* Designed for cleanup, maintenance, or future async jobs
+
+---
+
 ## Database
 
 * Uses **raw SQL** with Neon PostgreSQL
@@ -114,3 +125,4 @@ http://localhost:5001
 * Designed with scalability and maintainability in mind
 
 ---
+
