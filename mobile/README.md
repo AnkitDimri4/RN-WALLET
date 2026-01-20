@@ -10,12 +10,12 @@ A React Native mobile application built using **Expo Router** with **Clerk authe
 
 ##  Features
 
-* 📂 File-based routing using **Expo Router**
-* 🔐 Authentication with **Clerk (Email + OTP verification)**
-* 🔑 Secure session storage using **expo-secure-store**
-* 🧾 Fetch & manage transactions via custom hooks
-* 📊 Transaction summary (Income, Expenses, Balance)
-* ⌨️ Keyboard-safe forms using **react-native-keyboard-aware-scroll-view**
+* File-based routing using **Expo Router**
+* Authentication with **Clerk (Email + OTP verification)**
+* Secure session storage using **expo-secure-store**
+* Fetch & manage transactions via custom hooks
+* Transaction summary (Income, Expenses, Balance)
+* Keyboard-safe forms using **react-native-keyboard-aware-scroll-view**
 * 📱 Android & iOS compatible
 
 ---
@@ -151,7 +151,7 @@ POST   /api/transactions
 DELETE /api/transactions/:id
 ```
 
-⚠️ **Android Emulator API Base URL**
+**Android Emulator API Base URL**
 
 ```js
 http://<>:5001/api/transactions
@@ -167,16 +167,18 @@ http://<>:5001/api/transactions
 
 ---
 
-## 👨‍💻 Author
+##  Author
 
 **Ankit Dimri**
 📍 Dehradun, India
-🔗 GitHub: [https://github.com/AnkitDimri4](https://github.com/AnkitDimri4)
-🔗 LinkedIn: [https://linkedin.com/in/ankit-dimri-a6ab98263](https://linkedin.com/in/ankit-dimri-a6ab98263)
+<img width="31" height="38" alt="image" src="https://github.com/user-attachments/assets/688ecd8d-44e4-4da7-ab4c-678e021ba95f" />
+ GitHub: [https://github.com/AnkitDimri4](https://github.com/AnkitDimri4) 
+<img width="28" height="31" alt="image" src="https://github.com/user-attachments/assets/82e50c6e-5619-4c7c-b763-ccfba890b500" />
+LinkedIn: [https://linkedin.com/in/ankit-dimri-a6ab98263](https://linkedin.com/in/ankit-dimri-a6ab98263)
 
 ---
 
-## ⭐ Final Note
+## Final Note
 
 This project demonstrates **real-world authentication, API integration, and mobile UX handling** using modern Expo tooling. 
 
