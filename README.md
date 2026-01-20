@@ -84,4 +84,6 @@ Clone the repo and follow the respective README based on what you want to run.
 ## Note
 
 This project demonstrates **modern mobile + backend development**, secure authentication, and scalable API design.
+
 ---
+
