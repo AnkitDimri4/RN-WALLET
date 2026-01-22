@@ -22,43 +22,68 @@ A React Native mobile application built using **Expo Router** with **Clerk authe
 
 ## 🛠️ Tech Stack
 
-* **React Native**
-* **Expo**
-* **Expo Router**
-* **Clerk Expo**
-* **Express.js (Backend)**
-* **MongoDB**
-* **JavaScript (ES6+)**
+- ### **Frontend**
+   - React Native
+   - Expo
+   - Expo Router
+   - Clerk (Expo SDK)
+
+- ### **Backend**
+    - Node.js
+    - Express.js
+    - PostgreSQL (Neon)
+    - Redis (Upstash)
+    - Clerk Authentication
 
 ---
 
 ##  Project Structure
 
 ```text
-app/
- ├── (auth)/
- │    ├── sign-in.jsx
- │    └── sign-up.jsx
- ├── index.tsx
- ├── about.jsx
- └── _layout.tsx
-
-hooks/
- └── useTransactions.js
-
-assets/
- ├── images/
- └── styles/
-
-constants/
- └── colors.js
-
-backend/
- ├── routes/
- │    └── transactionsRoute.js
- ├── controllers/
- ├── config/
- └── server.js
+mobile/
+├── app/
+│   ├── (auth)/
+│   │   ├── _layout.jsx
+│   │   ├── sign-in.jsx
+│   │   └── sign-up.jsx
+│   │
+│   ├── (root)/
+│   │   ├── _layout.jsx
+│   │   └── index.jsx
+│   │
+│   ├── about.jsx
+│   └── _layout.jsx
+│
+├── components/
+│   ├── BalanceCard.jsx
+│   ├── NoTransactionsFound.jsx
+│   ├── PageLoader.jsx
+│   ├── SafeScreen.jsx
+│   ├── SignOutButton.js
+│   └── TransactionItem.jsx
+│
+├── hooks/
+│   └── useTransactions.js
+│
+├── assets/
+│   ├── fonts/
+│   ├── images/
+│   └── styles/
+│       ├── auth.styles.js
+│       ├── create.styles.js
+│       └── home.styles.js
+├── lib/
+│   └── utils.js
+│
+├── constants/
+│   └── colors.js
+│
+├── backend/
+│   ├── routes/
+│   │   └── transactionsRoute.js
+│   ├── controllers/
+│   ├── config/
+│   └── server.js
 ```
 
 ---
@@ -139,6 +164,38 @@ Handles:
 * Fetch summary (income, expense, balance)
 * Delete transactions
 * Loading & error states
+
+---
+
+###  Balance Overview
+- Displays **Total Balance**, **Income**, and **Expenses**
+- Auto-calculated and formatted values
+- Color-coded income and expense indicators
+
+### 📄 Transactions Management
+- View recent transactions in a performant `FlatList`
+- Category-based icons for better readability
+- Swipe-friendly, mobile-optimized UI
+- Delete transactions with confirmation dialog
+
+###  Data Refresh
+- Pull-to-refresh support for reloading transactions
+- Auto-fetch transactions when user logs in
+
+###  Reusable Components
+- `BalanceCard` for financial summary
+- `TransactionItem` for individual transactions
+- `PageLoader` for loading states
+- `NoTransactionsFound` empty state UI
+
+###  Navigation
+- Seamless navigation using **Expo Router**
+- Quick access to “Add Transaction” screen
+
+###  UI & UX
+- Clean and modern UI design
+- Consistent styling with shared theme and colors
+- Responsive and performance-optimized layout
 
 ---
 
