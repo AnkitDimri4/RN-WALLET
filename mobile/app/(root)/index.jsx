@@ -74,7 +74,11 @@ export default function Page() {
             <View style={styles.welcomeContainer}>
               <Text style={styles.welcomeText}>Welcome,</Text>
               <Text style={styles.usernameText}>
-                {user?.emailAddresses[0]?.emailAddress.split("@")[0]}
+                {/* {user?.emailAddresses[0]?.emailAddress.split("@")[0]} */}
+                {user?.emailAddresses[0]?.emailAddress?.split("@")[0]?.split(".")?.pop()}
+                {/* split("@")[0] → ankit.ankitdimri
+                  split(".") → ["ankit", "ankitdimri"]
+                  pop() → ankitdimri */}
               </Text>
             </View>
           </View>
@@ -116,3 +120,4 @@ export default function Page() {
     </View>
   );
 }
+
