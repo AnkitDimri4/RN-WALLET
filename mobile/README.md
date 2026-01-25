@@ -2,7 +2,7 @@
 
 ---
 
-# 📱 Expo Transactions App (Clerk Authentication)
+#  Expo Transactions App (Clerk Authentication)
 
 A React Native mobile application built using **Expo Router** with **Clerk authentication**, featuring email OTP sign-up, protected routes, and a transaction dashboard powered by custom hooks.
 
@@ -49,7 +49,8 @@ mobile/
 │   │
 │   ├── (root)/
 │   │   ├── _layout.jsx
-│   │   └── index.jsx
+│   │   ├── index.jsx
+│   │   └── create.jsx
 │   │
 │   ├── about.jsx
 │   └── _layout.jsx
@@ -76,7 +77,8 @@ mobile/
 │   └── utils.js
 │
 ├── constants/
-│   └── colors.js
+│   ├── colors.js
+│   └── api.js
 │
 ├── backend/
 │   ├── routes/
@@ -208,11 +210,24 @@ POST   /api/transactions
 DELETE /api/transactions/:id
 ```
 
+## Environment Variables
+
+Create a `.env` file in the root directory:
 **Android Emulator API Base URL**
 
+```env
+EXPO_PUBLIC_API_URL=http://10.0.2.2:5001/api
+````
+
+Then use it in code:
+
 ```js
-http://<>:5001/api/transactions
+export const API_URL = process.env.EXPO_PUBLIC_API_URL;
 ```
+
+> 🔸 `10.0.2.2` works only for **Android Emulator**
+> 🔸 Use your local IP (e.g. `192.168.x.x`) for physical devices
+> 🔸 Replace with production URL when deploying
 
 ---
 
@@ -239,4 +254,13 @@ LinkedIn: [https://linkedin.com/in/ankit-dimri-a6ab98263](https://linkedin.com/i
 
 This project demonstrates **real-world authentication, API integration, and mobile UX handling** using modern Expo tooling. 
 
+
 ---
+
+<div align="center">
+    Created by <b>Ankit Dimri</b>  
+    © 2026
+</div> 
+
+
+--- 
