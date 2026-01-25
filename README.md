@@ -5,6 +5,12 @@
 RN-WALLET is a full-stack **expense tracking application** consisting of a **React Native (Expo) mobile app** and a **Node.js + Express backend**.  
 The project focuses on real-world authentication, API integration, and clean architecture.
 
+
+---
+## Demo Video
+
+https://github.com/user-attachments/assets/62a3e6ea-94c2-4926-b9bd-27649c6360b8
+
 ---
 
 ## Mobile App (Expo)
@@ -86,4 +92,5 @@ Clone the repo and follow the respective README based on what you want to run.
 This project demonstrates **modern mobile + backend development**, secure authentication, and scalable API design.
 
 ---
+
 
