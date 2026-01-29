@@ -58,8 +58,7 @@ const CreateScreen = () => {
           user_id: user.id,
           title,
           amount: formattedAmount,
-          // category: selectedCategory || "",  // send empty string if not selected
-          category: selectedCategory  || null, // Clearly means “no category selected”
+          ...(selectedCategory && { category: selectedCategory }),
         }),
       });
 
