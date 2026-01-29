@@ -1,43 +1,45 @@
 
+---
+
+# Expo Transactions App (Clerk Authentication)
+
+A React Native mobile application built with **Expo Router** and **Clerk authentication**, featuring **email OTP sign-up, secure session management, protected routes, an interactive transaction dashboard powered by custom hooks, and automatic transaction category suggestions via an ML microservice.**
 
 ---
 
-#  Expo Transactions App (Clerk Authentication)
-
-A React Native mobile application built using **Expo Router** with **Clerk authentication**, featuring email OTP sign-up, protected routes, and a transaction dashboard powered by custom hooks.
-
----
-
-##  Features
-
-* File-based routing using **Expo Router**
-* Authentication with **Clerk (Email + OTP verification)**
-* Secure session storage using **expo-secure-store**
-* Fetch & manage transactions via custom hooks
-* Transaction summary (Income, Expenses, Balance)
-* Keyboard-safe forms using **react-native-keyboard-aware-scroll-view**
-* 📱 Android & iOS compatible
+* **File-based routing** with Expo Router for organized and scalable navigation
+* **Clerk authentication** with email + OTP verification for secure login
+* **Secure session storage** using `expo-secure-store`
+* **Fetch, create, and manage transactions** with custom React hooks
+* **Transaction summary dashboard** showing Income, Expenses, and Total Balance
+* **Automatic transaction category suggestion** via ML microservice (with optional manual override)
+* **Keyboard-aware forms** using `react-native-keyboard-aware-scroll-view` for smooth input experience
+* **Pull-to-refresh** and auto-fetch for up-to-date transaction data
+* **Responsive UI & UX**, optimized for both Android and iOS
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
-- ### **Frontend**
-   - React Native
-   - Expo
-   - Expo Router
-   - Clerk (Expo SDK)
+* ### **Frontend**
 
-- ### **Backend**
-    - Node.js
-    - Express.js
-    - PostgreSQL (Neon)
-    - Redis (Upstash)
-    - Clerk Authentication
+  * React Native
+  * Expo
+  * Expo Router
+  * Clerk (Expo SDK)
+
+* ### **Backend**
+
+  * Node.js
+  * Express.js
+  * PostgreSQL (Neon)
+  * Redis (Upstash)
+  * Clerk Authentication
+  * **ML Microservice for category prediction**
 
 ---
 
-##  Project Structure
+## Project Structure
 
 ```text
 mobile/
@@ -80,12 +82,22 @@ mobile/
 │   ├── colors.js
 │   └── api.js
 │
-├── backend/
-│   ├── routes/
-│   │   └── transactionsRoute.js
-│   ├── controllers/
-│   ├── config/
-│   └── server.js
+
+backend/
+├── routes/
+│   └── transactionsRoute.js
+├── services/
+│   └── ml.service.js   
+├── controllers/
+├── config/
+└── server.js
+
+ml-service/
+├── app.py                # FastAPI application
+├── train.py              # Model training script
+├── model.joblib          # Trained ML model
+├── vectorizer.joblib     # Text vectorizer
+├── requirements.txt      # Python dependencies
 ```
 
 ---
@@ -127,6 +139,8 @@ You can open the app in:
 * iOS Simulator
 * Expo Go
 
+> 🔸 Make sure the backend server is running at `API_URL` before starting the app
+
 ---
 
 ## Clerk Authentication Setup
@@ -136,7 +150,7 @@ You can open the app in:
 * Secure session handling
 * Protected routes using `<SignedIn />` and `<SignedOut />`
 
- **Note:** Development keys are used. Do not deploy to production with dev keys.
+**Note:** Development keys are used. Do not deploy to production with dev keys.
 
 ---
 
@@ -152,7 +166,7 @@ Used in authentication screens to improve UX.
 
 ---
 
-##  Transactions Hook
+## Transactions Hook
 
 Custom hook for managing transactions after login:
 
@@ -166,38 +180,46 @@ Handles:
 * Fetch summary (income, expense, balance)
 * Delete transactions
 * Loading & error states
+* Automatic category suggestion from ML microservice if no category selected
 
 ---
 
-###  Balance Overview
-- Displays **Total Balance**, **Income**, and **Expenses**
-- Auto-calculated and formatted values
-- Color-coded income and expense indicators
+### Balance Overview
+
+* Displays **Total Balance**, **Income**, and **Expenses**
+* Auto-calculated and formatted values
+* Color-coded income and expense indicators
 
 ### 📄 Transactions Management
-- View recent transactions in a performant `FlatList`
-- Category-based icons for better readability
-- Swipe-friendly, mobile-optimized UI
-- Delete transactions with confirmation dialog
 
-###  Data Refresh
-- Pull-to-refresh support for reloading transactions
-- Auto-fetch transactions when user logs in
+* View recent transactions in a performant `FlatList`
+* Category-based icons for better readability
+* Includes new category: **Health & Fitness**
+* Swipe-friendly, mobile-optimized UI
+* Delete transactions with confirmation dialog
 
-###  Reusable Components
-- `BalanceCard` for financial summary
-- `TransactionItem` for individual transactions
-- `PageLoader` for loading states
-- `NoTransactionsFound` empty state UI
+### Data Refresh
 
-###  Navigation
-- Seamless navigation using **Expo Router**
-- Quick access to “Add Transaction” screen
+* Pull-to-refresh available for transaction list
+* Auto-fetch transactions when user logs in
 
-###  UI & UX
-- Clean and modern UI design
-- Consistent styling with shared theme and colors
-- Responsive and performance-optimized layout
+### Reusable Components
+
+* `BalanceCard` for financial summary
+* `TransactionItem` for individual transactions
+* `PageLoader` for loading states
+* `NoTransactionsFound` empty state UI
+
+### Navigation
+
+* Seamless navigation using **Expo Router**
+* Quick access to “Add Transaction” screen
+
+### UI & UX
+
+* Clean and modern UI design
+* Consistent styling with shared theme and colors
+* Responsive and performance-optimized layout
 
 ---
 
@@ -210,28 +232,38 @@ POST   /api/transactions
 DELETE /api/transactions/:id
 ```
 
+---
+
 ## Environment Variables
 
 Create a `.env` file in the root directory:
+
 **Android Emulator API Base URL**
 
 ```env
 EXPO_PUBLIC_API_URL=http://10.0.2.2:5001/api
-````
+```
+
+**ML Service URL**
+
+```env
+EXPO_PUBLIC_ML_API_URL=http://<your-ml-service-url>/predict-category
+```
 
 Then use it in code:
 
 ```js
 export const API_URL = process.env.EXPO_PUBLIC_API_URL;
+export const ML_API_URL = process.env.EXPO_PUBLIC_ML_API_URL;
 ```
 
 > 🔸 `10.0.2.2` works only for **Android Emulator**
 > 🔸 Use your local IP (e.g. `192.168.x.x`) for physical devices
-> 🔸 Replace with production URL when deploying
+> 🔸 Replace with production URLs when deploying
 
 ---
 
-##  Learn More
+## Learn More
 
 * [Expo Documentation](https://docs.expo.dev)
 * [Expo Router](https://docs.expo.dev/router/introduction/)
@@ -239,21 +271,20 @@ export const API_URL = process.env.EXPO_PUBLIC_API_URL;
 
 ---
 
-##  Author
+## Author
 
 **Ankit Dimri**
 📍 Dehradun, India
-<img width="31" height="38" alt="image" src="https://github.com/user-attachments/assets/688ecd8d-44e4-4da7-ab4c-678e021ba95f" />
- GitHub: [https://github.com/AnkitDimri4](https://github.com/AnkitDimri4) 
-<img width="28" height="31" alt="image" src="https://github.com/user-attachments/assets/82e50c6e-5619-4c7c-b763-ccfba890b500" />
-LinkedIn: [https://linkedin.com/in/ankit-dimri-a6ab98263](https://linkedin.com/in/ankit-dimri-a6ab98263)
+<img width="31" height="36" alt="image" src="https://github.com/user-attachments/assets/688ecd8d-44e4-4da7-ab4c-678e021ba95f" /> [GitHub](https://github.com/AnkitDimri4)
+<img width="28" height="36" alt="image" src="https://github.com/user-attachments/assets/82e50c6e-5619-4c7c-b763-ccfba890b500" /> [LinkedIn](https://linkedin.com/in/ankit-dimri-a6ab98263)
+<img width="55" height="55" alt="image" src="https://github.com/user-attachments/assets/0519c35c-0e2e-4bba-be91-cceb69e077b8" />[LeetCode](https://leetcode.com/u/user4612MW/)
+
 
 ---
 
 ## Final Note
 
-This project demonstrates **real-world authentication, API integration, and mobile UX handling** using modern Expo tooling. 
-
+This project demonstrates **real-world authentication, API integration, ML-based category prediction, and mobile UX handling** using modern Expo tooling.
 
 ---
 
@@ -262,5 +293,5 @@ This project demonstrates **real-world authentication, API integration, and mobi
     © 2026
 </div> 
 
-
---- 
+---
+If you want, I can **also prepare a one-line commit message** for this update so it’s ready to push. Do you want me to do that?
