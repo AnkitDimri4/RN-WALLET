@@ -15,6 +15,7 @@ const CATEGORIES = [
   { id: "entertainment", name: "Entertainment", icon: "film" },
   { id: "bills", name: "Bills", icon: "receipt" },
   { id: "income", name: "Income", icon: "cash" },
+  { id: "health", name: "Health & Fitness", icon: "heart" }, 
   { id: "other", name: "Other", icon: "ellipsis-horizontal" },
 ];
 
@@ -37,8 +38,9 @@ const CreateScreen = () => {
       return;
     }
 
-    if (!selectedCategory)
-      return Alert.alert("Error", "Please select a category");
+    // if (!selectedCategory)
+    //   return Alert.alert("Error", "Please select a category");
+  
 
     setIsLoading(true);
     try {
@@ -56,7 +58,8 @@ const CreateScreen = () => {
           user_id: user.id,
           title,
           amount: formattedAmount,
-          category: selectedCategory,
+          // category: selectedCategory || "",  // send empty string if not selected
+          category: selectedCategory  || null, // Clearly means “no category selected”
         }),
       });
 
@@ -93,7 +96,7 @@ const CreateScreen = () => {
           {!isLoading && <Ionicons name="checkmark" size={18} color={COLORS.primary} />}
         </TouchableOpacity>
       </View>
-      
+
       <View style={styles.card}>
         <View style={styles.typeSelector}>
           {/* EXPENSE SELECTOR */}
