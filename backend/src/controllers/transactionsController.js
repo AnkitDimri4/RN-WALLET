@@ -1,4 +1,7 @@
 import { sql } from "../config/db.js";
+import { predictCategory } from "../services/ml.service.js";
+
+// (If Node 18+, native fetch works — otherwise install node-fetch) npm install node-fetch - import fetch from "node-fetch";
 
 export async function getTransactionsByUserId(req, res) {
   try {
@@ -35,6 +38,7 @@ export async function getTransactionsByUserId(req, res) {
 //   }
 // }
 
+// -------------------------------------
 
 export async function createTransaction(req, res) {
   try {
@@ -45,8 +49,21 @@ export async function createTransaction(req, res) {
     }
 
     // AUTO CATEGORY (SERVICE CALL)
-    if (!category) {
-      category = await predictCategory(title);
+    // if (!category) {
+    //   category = await predictCategory(title);
+    // }
+    // AUTO CATEGORY (SAFE)
+    if (!category || typeof category !== "string" || category.trim() === "") {
+      try {
+        category = await predictCategory(title);
+      } catch (e) {
+        category = "Other";
+      }
+    }
+
+    // FINAL GUARANTEE (VERY IMPORTANT)
+    if (!category || category.trim() === "") {
+      category = "Other";
     }
 
     const transaction = await sql`
@@ -61,7 +78,6 @@ export async function createTransaction(req, res) {
     res.status(500).json({ message: "Internal server error" });
   }
 }
-
 
 export async function deleteTransaction(req, res) {
   try {
@@ -119,4 +135,3 @@ export async function getSummaryByUserId(req, res) {
     res.status(500).json({ message: "Interal server error" });
   }
 }
-
