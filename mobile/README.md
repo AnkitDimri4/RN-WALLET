@@ -294,4 +294,3 @@ This project demonstrates **real-world authentication, API integration, ML-based
 </div> 
 
 ---
-If you want, I can **also prepare a one-line commit message** for this update so it’s ready to push. Do you want me to do that?
