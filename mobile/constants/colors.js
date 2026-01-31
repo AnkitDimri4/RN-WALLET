@@ -5,11 +5,15 @@ const coffeeTheme = {
   text: "#4A3428",
   border: "#E5D3B7",
   white: "#FFFFFF",
+  grey: "#dde6d9",
   textLight: "#9A8478",
   expense: "#E74C3C",
+  expenseD: "#c9210b",
   income: "#2ECC71",
+  pieG:"#236940",
   card: "#FFFFFF",
   shadow: "#000000",
+  name: "#512535",
 };
 
 const forestTheme = {
