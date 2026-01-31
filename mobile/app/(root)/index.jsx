@@ -18,6 +18,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { BalanceCard } from "../../components/BalanceCard";
 import { TransactionItem } from "../../components/TransactionItem";
 import NoTransactionsFound from "../../components/NoTransactionsFound";
+import { COLORS } from "../../constants/colors.js";
 
 export default function Page() {
   const { user } = useUser();
@@ -38,7 +39,6 @@ export default function Page() {
       loadData();
     }
   }, [user?.id, loadData]);
-  
 
   // console.log(user.id);
 
@@ -75,13 +75,19 @@ export default function Page() {
               <Text style={styles.welcomeText}>Welcome,</Text>
               <Text style={styles.usernameText}>
                 {/* {user?.emailAddresses[0]?.emailAddress.split("@")[0]} */}
-                {user?.emailAddresses[0]?.emailAddress?.split("@")[0]?.split(".")?.pop()}
-                {/* split("@")[0] → ankit.ankitdimri
-                  split(".") → ["ankit", "ankitdimri"]
-                  pop() → ankitdimri */}
+                {user?.emailAddresses[0]?.emailAddress
+                  ?.split("@")[0]
+                  ?.split(".")
+                  ?.pop()}
               </Text>
             </View>
           </View>
+          <View style={styles.headerMid}>
+            <TouchableOpacity onPress={() => router.push("/analytics")}>
+              <Ionicons name="stats-chart" size={24} color={COLORS.text} />
+            </TouchableOpacity>
+          </View>
+
           {/* RIGHT */}
           <View style={styles.headerRight}>
             <TouchableOpacity
@@ -99,6 +105,9 @@ export default function Page() {
 
         <View style={styles.transactionsHeaderContainer}>
           <Text style={styles.sectionTitle}>Recent Transactions</Text>
+          <TouchableOpacity onPress={loadData} activeOpacity={0.9}>
+            <Ionicons name="refresh-circle-sharp" size={30} color="#826031" />
+          </TouchableOpacity>
         </View>
       </View>
 
@@ -120,4 +129,3 @@ export default function Page() {
     </View>
   );
 }
-
