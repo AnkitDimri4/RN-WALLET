@@ -2,8 +2,24 @@
 ---
 # RN-WALLET 
 
-RN-WALLET is a full-stack **expense tracking application** consisting of a **React Native (Expo) mobile app** and a **Node.js + Express backend**.  
-The project focuses on real-world authentication, API integration, clean architecture, and **ML-based transaction categorization**.
+RN-WALLET is a full-stack **expense tracking application** consisting of a **React Native (Expo) mobile app**, a **Node.js + Express backend**, and a dedicated **ML microservice** for automatic transaction categorization.
+The project focuses on **real-world authentication**, **clean API architecture**, **custom analytics**, and **ML-driven automation**.
+
+
+<div align="center">
+  <img width="160" alt="image" src="https://github.com/user-attachments/assets/e76ee7b4-46e9-4977-8991-d185fc11529d" />
+  <img width="160" alt="image" src="https://github.com/user-attachments/assets/38662cf4-575c-47d2-b18c-56ab71df604f" />
+  <img width="160" alt="image" src="https://github.com/user-attachments/assets/4903a4e4-aaa6-4014-afd1-d7c86af6be0e" />
+  <img width="160" alt="image" src="https://github.com/user-attachments/assets/df751f5d-002d-4fb1-87e4-e2cd1282e47f" />
+  <img src="https://github.com/user-attachments/assets/ea05544c-3b3d-43fb-9f93-8c1dd8d24851" width="160" />
+  <img width="160" alt="image" src="https://github.com/user-attachments/assets/c5af3e64-1c77-45cf-a834-2de4cb299d3b" />
+  <img width="160" alt="image" src="https://github.com/user-attachments/assets/c979841e-00ed-4c04-a8bf-799e32202bb4" />
+  <img src="https://github.com/user-attachments/assets/ea05544c-3b3d-43fb-9f93-8c1dd8d24851" width="160" />
+  <img src="https://github.com/user-attachments/assets/51dd2c44-edfa-483f-9a8f-9dd6173cfbe1" width="160" />
+  <img src="https://github.com/user-attachments/assets/7515fad4-d378-48b9-90c1-043b8e73a40a" width="160" />
+  <img src="https://github.com/user-attachments/assets/caed3e79-40e7-4cc6-a879-9f5b404b2509" width="160" />
+ </div>
+
 
 ---
 ## Demo Video
@@ -20,6 +36,11 @@ https://github.com/user-attachments/assets/62a3e6ea-94c2-4926-b9bd-27649c6360b8
 
 https://github.com/user-attachments/assets/a498f09c-a84a-4cfe-af4f-e101835fdd42
 
+### After Analytics Integration
+
+https://github.com/user-attachments/assets/5fa62d59-626b-4da3-b589-7df8360c5937
+
+
 
 ---
 
@@ -27,48 +48,124 @@ https://github.com/user-attachments/assets/a498f09c-a84a-4cfe-af4f-e101835fdd42
 
 The mobile app is built using **Expo Router** and **Clerk authentication**.
 
-**Key highlights:**
-- Email + OTP authentication (Clerk)
-- Secure session storage
-- Transaction dashboard (Income, Expense, Balance)
--  **Add transaction with title, amount, and optional category**  
-  - If the category is not selected, the **ML service automatically predicts the category** based on the title.
-- Custom hooks for API interaction
-- Android & iOS support
+### Key Features
 
-**Tech stack:**
-- React Native
-- Expo & Expo Router
-- Clerk Expo
-- JavaScript (ES6+)
+* Email + OTP authentication (Clerk)
+* Secure session storage
+* Transaction dashboard (Income, Expense, Balance)
+* **Analytics Dashboard** with charts:
+
+  * Income vs Expense (Bar)
+  * Monthly trends (Line)
+  * Category-wise spending (Pie)
+* **Add transaction with optional category**
+
+  * If not provided, category is predicted via ML service
+* Custom hooks for API & state management
+* Android & iOS support
+
+### Tech Stack
+
+
+  * **React Native** - Cross-platform mobile app development 
+  * **Expo** - Fast development, build, and deployment
+  * **Expo Router** - File-based navigation
+  * **Clerk (Expo SDK)** - Secure user authentication
+
+  * ### **Analytics & Visualization**
+  
+  * react-native-chart-kit – Chart rendering
+  * react-native-svg – SVG support for charts
 
     Folder: `mobile/`  
-➡️ Detailed setup is available inside `mobile/README.md`
+### ➡️[Detailed Frontend setup & documentation](./mobile/README.md)
 
 ---
 
 ## Backend (API Server)
 
-The backend provides REST APIs for managing transactions and summaries.
+The backend exposes REST APIs for transaction management, analytics summaries, and ML integration.
 
-**Key highlights:**
-- Express.js server
-- PostgreSQL (Neon) database
-- Redis (Upstash) rate limiting
-- Clean MVC-style architecture
-- Clerk-based user identification
--  **ML service integration**: If the transaction category is not provided, the backend calls the **ML API** to predict the category automatically.  
-  - Includes fallback logic for unknown or invalid titles.
-  - In-memory caching reduces repeated ML calls.
-    
-**Tech stack:**
-- Node.js
-- Express.js
-- PostgreSQL (Neon)
-- Redis (Upstash)
+### Key Features
+
+* Express.js REST API
+* PostgreSQL (Neon) for persistent storage
+* Redis (Upstash) for caching & rate limiting
+* Clerk-based user authentication & JWT validation
+* **ML Service Integration**
+
+  * Predicts transaction category if not provided
+  * Fallback logic assigns `"Other"` if prediction fails
+  * Cached results reduce repeated ML calls
+* Clean MVC-style architecture
+
+### Tech Stack
+
+  * **Node.js & Express.js**
+  * **PostgreSQL (Neon)** – Cloud-hosted relational database
+  * **Redis (Upstash)** – Caching and session optimization
+  * **Clerk Authentication** – Backend auth & JWT verification
+  * **ML Microservice** – Auto expense category prediction
+  * **Render** – Backend & ML services deployment
 
     Folder: `backend/`  
-➡️ Detailed setup is available inside `backend/README.md`
+### ➡️ [Detailed setup & documentation](./backend/README.md)
+
+---
+
+## System Architecture
+
+Mobile App (Expo / React Native)
+        |
+        v
+Node.js Backend (Auth, DB, Business Logic)
+        |
+        v
+ML Microservice (FastAPI + NLP Model)
+
+
+---
+
+## ML Tech Stack
+
+- Python
+- FastAPI
+- Scikit-learn
+- Joblib
+- Uvicorn
+
+### ➡️[ML Service Documentation](./ml-service/README.md)
+
+---
+
+
+## 📊 Analytics & Insights
+
+RN-WALLET includes a **custom analytics engine** that transforms raw transaction data into meaningful insights.
+
+### Analytics Capabilities
+
+* Monthly transaction filtering
+* Income, expense & balance aggregation
+* Category-wise spending analysis
+* Chart-based visualization using reusable components
+
+This logic powers the Analytics Dashboard in the mobile app.
+
+---
+
+##  ML Service
+
+A separate ML microservice is responsible for **automatic transaction categorization**.
+
+### Highlights
+
+* Python-based service
+* Trained text classification model
+* Predicts category from transaction title
+* Integrated via backend API
+
+📁 Folder: `ml-service/`
 
 ---
 
@@ -113,8 +210,8 @@ Clone the repo and follow the respective README based on what you want to run.
 
 ## Note
 
-This project demonstrates **modern mobile + backend development**, secure authentication, scalable API design, and **intelligent transaction categorization using an ML service**.
 
+This project demonstrates **modern mobile development**, **secure authentication**, **scalable backend design**, **custom analytics**, and **ML-powered automation** in a production-style architecture.  
 
 ---
 
@@ -124,4 +221,5 @@ This project demonstrates **modern mobile + backend development**, secure authen
 </div> 
 
 ---
+
 
