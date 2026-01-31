@@ -24,6 +24,9 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
+  headerMid: {
+    marginRight: "10",
+  },
   headerLogo: {
     width: 75,
     height: 75,
@@ -122,7 +125,7 @@ export const styles = StyleSheet.create({
     marginBottom: 4,
   },
   balanceStatAmount: {
-    fontSize: 18,
+    fontSize: 14,
     fontWeight: "600",
   },
   sectionTitle: {
