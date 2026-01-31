@@ -7,17 +7,17 @@ The project focuses on **real-world authentication**, **clean API architecture**
 
 
 <div align="center">
-  <img width="160" alt="image" src="https://github.com/user-attachments/assets/e76ee7b4-46e9-4977-8991-d185fc11529d" />
-  <img width="160" alt="image" src="https://github.com/user-attachments/assets/38662cf4-575c-47d2-b18c-56ab71df604f" />
-  <img width="160" alt="image" src="https://github.com/user-attachments/assets/4903a4e4-aaa6-4014-afd1-d7c86af6be0e" />
-  <img width="160" alt="image" src="https://github.com/user-attachments/assets/df751f5d-002d-4fb1-87e4-e2cd1282e47f" />
-  <img src="https://github.com/user-attachments/assets/ea05544c-3b3d-43fb-9f93-8c1dd8d24851" width="160" />
-  <img width="160" alt="image" src="https://github.com/user-attachments/assets/c5af3e64-1c77-45cf-a834-2de4cb299d3b" />
-  <img width="160" alt="image" src="https://github.com/user-attachments/assets/c979841e-00ed-4c04-a8bf-799e32202bb4" />
-  <img src="https://github.com/user-attachments/assets/ea05544c-3b3d-43fb-9f93-8c1dd8d24851" width="160" />
-  <img src="https://github.com/user-attachments/assets/51dd2c44-edfa-483f-9a8f-9dd6173cfbe1" width="160" />
-  <img src="https://github.com/user-attachments/assets/7515fad4-d378-48b9-90c1-043b8e73a40a" width="160" />
-  <img src="https://github.com/user-attachments/assets/caed3e79-40e7-4cc6-a879-9f5b404b2509" width="160" />
+  <img width="140" alt="image" src="https://github.com/user-attachments/assets/e76ee7b4-46e9-4977-8991-d185fc11529d" />
+  <img width="140" alt="image" src="https://github.com/user-attachments/assets/38662cf4-575c-47d2-b18c-56ab71df604f" />
+  <img width="140" alt="image" src="https://github.com/user-attachments/assets/4903a4e4-aaa6-4014-afd1-d7c86af6be0e" />
+  <img width="140" alt="image" src="https://github.com/user-attachments/assets/df751f5d-002d-4fb1-87e4-e2cd1282e47f" />
+  <img src="https://github.com/user-attachments/assets/ea05544c-3b3d-43fb-9f93-8c1dd8d24851" width="140" />
+  <img width="140" alt="image" src="https://github.com/user-attachments/assets/c5af3e64-1c77-45cf-a834-2de4cb299d3b" />
+  <img width="140" alt="image" src="https://github.com/user-attachments/assets/c979841e-00ed-4c04-a8bf-799e32202bb4" />
+  <img src="https://github.com/user-attachments/assets/ea05544c-3b3d-43fb-9f93-8c1dd8d24851" width="140" />
+  <img src="https://github.com/user-attachments/assets/51dd2c44-edfa-483f-9a8f-9dd6173cfbe1" width="140" />
+  <img src="https://github.com/user-attachments/assets/7515fad4-d378-48b9-90c1-043b8e73a40a" width="140" />
+  <img src="https://github.com/user-attachments/assets/caed3e79-40e7-4cc6-a879-9f5b404b2509" width="140" />
  </div>
 
 
@@ -113,6 +113,7 @@ The backend exposes REST APIs for transaction management, analytics summaries, a
 
 ---
 
+```text
 ## System Architecture
 
 Mobile App (Expo / React Native)
@@ -122,7 +123,7 @@ Node.js Backend (Auth, DB, Business Logic)
         |
         v
 ML Microservice (FastAPI + NLP Model)
-
+```
 
 ---
 
@@ -221,5 +222,6 @@ This project demonstrates **modern mobile development**, **secure authentication
 </div> 
 
 ---
+
 
 
