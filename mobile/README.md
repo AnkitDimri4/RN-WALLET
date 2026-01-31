@@ -3,7 +3,21 @@
 
 # Expo Transactions App (Clerk Authentication)
 
-A React Native mobile application built with **Expo Router** and **Clerk authentication**, featuring **email OTP sign-up, secure session management, protected routes, an interactive transaction dashboard powered by custom hooks, and automatic transaction category suggestions via an ML microservice.**
+A React Native mobile application built with **Expo Router** and **Clerk authentication**, featuring **email OTP sign-up, secure session management, protected routes, an interactive transaction & analytics dashboard with charts, custom hooks, and automatic transaction category suggestions via an ML microservice.**
+
+<div align="center">
+  <img width="180" alt="image" src="https://github.com/user-attachments/assets/e76ee7b4-46e9-4977-8991-d185fc11529d" />
+  <img width="180" alt="image" src="https://github.com/user-attachments/assets/38662cf4-575c-47d2-b18c-56ab71df604f" />
+  <img src="https://github.com/user-attachments/assets/ea05544c-3b3d-43fb-9f93-8c1dd8d24851" width="180" />
+  <img width="180" alt="image" src="https://github.com/user-attachments/assets/c5af3e64-1c77-45cf-a834-2de4cb299d3b" />
+  <img width="180" alt="image" src="https://github.com/user-attachments/assets/c979841e-00ed-4c04-a8bf-799e32202bb4" />
+  <img src="https://github.com/user-attachments/assets/ea05544c-3b3d-43fb-9f93-8c1dd8d24851" width="180" />
+  <img src="https://github.com/user-attachments/assets/51dd2c44-edfa-483f-9a8f-9dd6173cfbe1" width="180" />
+  <img src="https://github.com/user-attachments/assets/7515fad4-d378-48b9-90c1-043b8e73a40a" width="180" />
+  <img src="https://github.com/user-attachments/assets/caed3e79-40e7-4cc6-a879-9f5b404b2509" width="180" />
+ </div>
+
+
 
 ---
 
@@ -15,6 +29,10 @@ A React Native mobile application built with **Expo Router** and **Clerk authent
 * **Automatic transaction category suggestion** via ML microservice (with optional manual override)
 * **Keyboard-aware forms** using `react-native-keyboard-aware-scroll-view` for smooth input experience
 * **Pull-to-refresh** and auto-fetch for up-to-date transaction data
+* **Analytics Dashboard** with monthly transaction insights
+* **Bar, Line, and Pie charts** for income, expenses, balance, and categories
+* **Date-based filtering** to analyze spending trends over time
+* **Reusable chart components** with consistent styling
 * **Responsive UI & UX**, optimized for both Android and iOS
 
 ---
@@ -51,6 +69,7 @@ mobile/
 │   │
 │   ├── (root)/
 │   │   ├── _layout.jsx
+|   |   ├── analytics.jsx
 │   │   ├── index.jsx
 │   │   └── create.jsx
 │   │
@@ -58,6 +77,12 @@ mobile/
 │   └── _layout.jsx
 │
 ├── components/
+│   ├── charts/
+│   │   ├── ExpenseLineChart.jsx
+│   │   ├── IncomeExpenseBar.jsx
+│   │   └── CategoryPieChart.jsx
+│   ├── filters/
+│   │   └── MonthFilter.jsx
 │   ├── BalanceCard.jsx
 │   ├── NoTransactionsFound.jsx
 │   ├── PageLoader.jsx
@@ -72,6 +97,7 @@ mobile/
 │   ├── fonts/
 │   ├── images/
 │   └── styles/
+|       ├── analytics.styles.js
 │       ├── auth.styles.js
 │       ├── create.styles.js
 │       └── home.styles.js
@@ -214,12 +240,51 @@ Handles:
 
 * Seamless navigation using **Expo Router**
 * Quick access to “Add Transaction” screen
+* Includes navigation to the Analytics screen from the main dashboard.
 
 ### UI & UX
 
 * Clean and modern UI design
 * Consistent styling with shared theme and colors
 * Responsive and performance-optimized layout
+* The app also includes a dedicated Analytics screen with chart-based financial insights for better decision-making.
+
+---
+
+### Chart Dependencies
+
+```bash
+npm install react-native-chart-kit react-native-svg
+```
+
+Used for rendering **Bar, Line, and Pie charts** in the Analytics dashboard.
+
+---
+
+### Analytics Navigation Flow
+
+```text
+Button Click
+     ↓
+router.push("/analytics")
+     ↓
+Expo Router resolves route:
+app/(root)/analytics.jsx
+     ↓
+Authentication check via (root)/_layout.jsx
+     ↓
+Analytics screen renders
+```
+This flow makes sure **protected routing**, smooth navigation, and consistent screen rendering using Expo Router.
+
+
+
+## 📊 Analytics Dashboard
+
+The Analytics screen provides visual insights into user spending behavior using interactive charts. Users can filter transactions by month and view income vs expenses, balance trends, and category-wise spending distribution through reusable and well-structured chart components. All analytics UI follows the shared theme defined in `COLORS.js` and `analytics.styles.js` for design consistency.
+
+
+https://github.com/user-attachments/assets/5fa62d59-626b-4da3-b589-7df8360c5937
 
 ---
 
